@@ -2,9 +2,9 @@ const xlsx = require('node-xlsx');
 const fs = require('fs');
 
 // Parse a file
-const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
-
 const limit = process.argv[2] || 2000;
+const fileName = process.argv[3] || 'myFile';
+const workSheetsFromFile = xlsx.parse(`${__dirname}/${fileName}.xlsx`);
 
 // workSheetsFromFile => array de "pastas" na planilha (sheets)
 // workSheetsFromFile[0] => primeira pasta de nome "name" e com um array (linhas) de arrays (colunas)
