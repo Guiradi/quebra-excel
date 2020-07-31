@@ -1,0 +1,9 @@
+{
+  "name": "quebra-xlsx",
+  "version": "1.0.0",
+  "description": "Script para quebrar um excel em arquivos txt de 2000 linhas",
+  "main": "index.js",
+  "author": "Guilherme Ferreira",
+  "license": "MIT",
+  "private": false
+}
