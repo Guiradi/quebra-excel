@@ -4,6 +4,8 @@ const fs = require('fs');
 // Parse a file
 const workSheetsFromFile = xlsx.parse(`${__dirname}/myFile.xlsx`);
 
+const limit = process.argv[2] || 2000;
+
 // workSheetsFromFile => array de "pastas" na planilha (sheets)
 // workSheetsFromFile[0] => primeira pasta de nome "name" e com um array (linhas) de arrays (colunas)
 // Quantidade de linhas = workSheetsFromFile[0].data.length
@@ -12,10 +14,10 @@ const lines = workSheetsFromFile[0].data.length;
 
 let i, j;
 
-for (i = 0; i < lines/2000; i++) {
+for (i = 0; i < lines/limit; i++) {
   let txt = "";
-  for (j = 0; j < 2000; j++) {
-    if (i*2000 + j === lines) {
+  for (j = 0; j < limit; j++) {
+    if (i*limit + j === lines) {
       break;
     }
     
@@ -23,7 +25,7 @@ for (i = 0; i < lines/2000; i++) {
       txt += "\n"
     }
 
-    txt += workSheetsFromFile[0].data[i*2000 + j].join("");
+    txt += workSheetsFromFile[0].data[i*limit + j].join("");
   }
   
   fs.writeFile(`./output/arquivo-${i+1}.txt`, txt, (res, err) => {
